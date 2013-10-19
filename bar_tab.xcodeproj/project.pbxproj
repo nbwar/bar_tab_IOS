@@ -383,6 +383,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bar_tab/bar_tab-Prefix.pch";
 				INFOPLIST_FILE = "bar_tab/bar_tab-Info.plist";
@@ -465,6 +466,7 @@
 				012B053718131676000E366B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		012B053818131676000E366B /* Build configuration list for PBXNativeTarget "bar_tabTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +475,7 @@
 				012B053A18131676000E366B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

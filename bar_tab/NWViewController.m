@@ -12,8 +12,8 @@
 @interface NWViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *tabButtonOutlet;
-//@property (nonatomic, retain) CLLocationManager *locationManager;
 @property (strong, nonatomic) NSMutableArray *locationMeasurements;
+@property (weak, nonatomic) IBOutlet UILabel *testLabel;
 
 
 - (IBAction)tabButtonPressed:(UIButton *)sender;
@@ -64,19 +64,33 @@
     [locationManager stopUpdatingLocation];
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations {
-    // If it's a relatively recent event, turn off updates to save power.
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    BOOL isInBackground = NO;
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground)
+    {
+        isInBackground = YES;
+    }
     CLLocation* location = [locations lastObject];
-    NSDate* eventDate = location.timestamp;
-    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    NSLog(@"%i", abs(howRecent));
-    if (abs(howRecent) < 15.0) {
-        // If the event is recent, do something with it.
+//    NSDate* eventDate = location.timestamp;
+//    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    
+    if (isInBackground)
+    {
+        NSLog(@"BACKGROUND");
         NSLog(@"latitude %+.6f, longitude %+.6f\n",
               location.coordinate.latitude,
               location.coordinate.longitude);
     }
+    else
+    {
+        NSLog(@"RUNNING");
+        NSLog(@"latitude %+.6f, longitude %+.6f\n",
+              location.coordinate.latitude,
+              location.coordinate.longitude);
+    }
+   
+
 }
 
 -(NSMutableArray *)locationMeasurements
@@ -85,6 +99,17 @@
     return _locationMeasurements;
 }
 
+-(void) applicationDidEnterBackground:(UIApplication *) application
+{
+    [locationManager stopUpdatingLocation];
+    [locationManager startMonitoringSignificantLocationChanges];
+}
+
+-(void) applicationDidBecomeActive:(UIApplication *) application
+{
+    [locationManager stopMonitoringSignificantLocationChanges];
+    [locationManager startUpdatingLocation];
+}
 
 
 
