@@ -21,6 +21,7 @@
 		012B052818131676000E366B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012B050A18131676000E366B /* UIKit.framework */; };
 		012B053018131676000E366B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 012B052E18131676000E366B /* InfoPlist.strings */; };
 		012B053218131676000E366B /* bar_tabTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 012B053118131676000E366B /* bar_tabTests.m */; };
+		012B053C18131EAE000E366B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012B053B18131EAE000E366B /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		012B052D18131676000E366B /* bar_tabTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bar_tabTests-Info.plist"; sourceTree = "<group>"; };
 		012B052F18131676000E366B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		012B053118131676000E366B /* bar_tabTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bar_tabTests.m; sourceTree = "<group>"; };
+		012B053B18131EAE000E366B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				012B053C18131EAE000E366B /* CoreLocation.framework in Frameworks */,
 				012B050918131676000E366B /* CoreGraphics.framework in Frameworks */,
 				012B050B18131676000E366B /* UIKit.framework in Frameworks */,
 				012B050718131676000E366B /* Foundation.framework in Frameworks */,
@@ -101,6 +104,7 @@
 		012B050518131676000E366B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				012B053B18131EAE000E366B /* CoreLocation.framework */,
 				012B050618131676000E366B /* Foundation.framework */,
 				012B050818131676000E366B /* CoreGraphics.framework */,
 				012B050A18131676000E366B /* UIKit.framework */,

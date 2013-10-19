@@ -6,9 +6,17 @@
 //  Copyright (c) 2013 Nicholas Wargnier. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import "NWViewController.h"
 
 @interface NWViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *tabButtonOutlet;
+//@property (nonatomic, retain) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSMutableArray *locationMeasurements;
+
+
+- (IBAction)tabButtonPressed:(UIButton *)sender;
 
 @end
 
@@ -25,5 +33,59 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)tabButtonPressed:(UIButton *)sender
+{
+    if ([sender.currentTitle isEqualToString:@"Open Tab"]) {
+        [sender setTitle:@"Close Tab" forState:UIControlStateNormal];
+        [self startMonitoringLocation];
+        
+    } else {
+        [sender setTitle:@"Open Tab" forState:UIControlStateNormal];
+        [self stopMonitoringLocation];
+    }
+}
+
+
+
+- (void)startMonitoringLocation
+{
+    if (nil == locationManager)
+        locationManager = [[CLLocationManager alloc] init];
+    
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = 0; // meters
+    [locationManager startUpdatingLocation];
+}
+
+-(void)stopMonitoringLocation
+{
+    [locationManager stopUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations {
+    // If it's a relatively recent event, turn off updates to save power.
+    CLLocation* location = [locations lastObject];
+    NSDate* eventDate = location.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    NSLog(@"%i", abs(howRecent));
+    if (abs(howRecent) < 15.0) {
+        // If the event is recent, do something with it.
+        NSLog(@"latitude %+.6f, longitude %+.6f\n",
+              location.coordinate.latitude,
+              location.coordinate.longitude);
+    }
+}
+
+-(NSMutableArray *)locationMeasurements
+{
+    if (!_locationMeasurements) _locationMeasurements = [[NSMutableArray alloc] init];
+    return _locationMeasurements;
+}
+
+
+
 
 @end

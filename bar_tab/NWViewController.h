@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NWViewController : UIViewController
+@interface NWViewController : UIViewController <CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+}
 
 @end
