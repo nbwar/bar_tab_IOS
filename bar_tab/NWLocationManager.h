@@ -12,8 +12,5 @@
 @interface NWLocationManager : NSObject <CLLocationManagerDelegate>
 
 -(void)startLocationManager;
-
 -(void)stopLocationManager;
-
-
 @end

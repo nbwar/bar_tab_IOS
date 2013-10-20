@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NWViewController : UIViewController
-
+-(void)mayHaveLeftBarAlert;
 @end

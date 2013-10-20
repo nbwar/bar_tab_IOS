@@ -7,12 +7,18 @@
 //
 
 #import "NWLocationManager.h"
+#import "NWViewController.h"
 
 @interface NWLocationManager()
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NWViewController *viewController;
+@property (strong, nonatomic) NSMutableArray *locationsArray;
 @end
 
 @implementation NWLocationManager
+
+
+// LazyI
 
 -(CLLocationManager *)locationManager
 {
@@ -20,13 +26,22 @@
     return _locationManager;
 }
 
+- (NWViewController *)viewController
+{
+    if(!_viewController) _viewController = [[NWViewController alloc] init];
+    return _viewController;
+}
+
+-(NSMutableArray *)locationsArray
+{
+    if(!_locationsArray) _locationsArray = [[NSMutableArray alloc] init];
+    return _locationsArray;
+}
+
 
 -(void)startLocationManager
 {
     NSLog(@"Starting Location Manager");
-//    if (nil == self.locationManager)
-//        self.locationManager = [[CLLocationManager alloc] init];
-    
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.distanceFilter = 10; // meters
@@ -50,16 +65,14 @@
         isInBackground = YES;
     }
     CLLocation* location = [locations lastObject];
-//    [self.locationMeasurements addObject:location];
-//    CLLocationDistance distance = [self.locationMeasurements[0] distanceFromLocation:[self.locationMeasurements lastObject]];
-//    NSLog(@"%g", distance);
-//    if (distance > 300) {
-//        UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:@"WoaH" message:@"You may have forgotten to close you're tab" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-//        [alerView show];
-//    }
+    [self.locationsArray addObject:location];
     
-    //    NSDate* eventDate = location.timestamp;
-    //    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    CLLocationDistance distance = [self.locationsArray [0] distanceFromLocation:[self.locationsArray lastObject]];
+
+    NSLog(@"%g", distance);
+    if (distance > 30) {
+        [self.viewController mayHaveLeftBarAlert];
+    }
     
     if (isInBackground)
     {

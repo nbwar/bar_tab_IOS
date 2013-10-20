@@ -62,4 +62,12 @@
 }
 
 
+// Outward facing API
+-(void)mayHaveLeftBarAlert
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Whoops" message:@"You may have forgotten to close your tab!" delegate:nil cancelButtonTitle:@"Thanks!" otherButtonTitles: nil];
+    [alertView show];
+}
+
+
 @end
