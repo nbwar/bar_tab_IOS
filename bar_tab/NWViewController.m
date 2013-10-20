@@ -25,13 +25,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 - (IBAction)tabButtonPressed:(UIButton *)sender
@@ -55,7 +54,7 @@
     
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = 0; // meters
+    locationManager.distanceFilter = 10; // meters
     [locationManager startUpdatingLocation];
 }
 
@@ -72,6 +71,14 @@
         isInBackground = YES;
     }
     CLLocation* location = [locations lastObject];
+    [self.locationMeasurements addObject:location];
+    CLLocationDistance distance = [self.locationMeasurements[0] distanceFromLocation:[self.locationMeasurements lastObject]];
+    NSLog(@"%g", distance);
+    if (distance > 300) {
+        UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:@"WoaH" message:@"You may have forgotten to close you're tab" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alerView show];
+    }
+
 //    NSDate* eventDate = location.timestamp;
 //    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     
@@ -99,17 +106,7 @@
     return _locationMeasurements;
 }
 
--(void) applicationDidEnterBackground:(UIApplication *) application
-{
-    [locationManager stopUpdatingLocation];
-    [locationManager startMonitoringSignificantLocationChanges];
-}
 
--(void) applicationDidBecomeActive:(UIApplication *) application
-{
-    [locationManager stopMonitoringSignificantLocationChanges];
-    [locationManager startUpdatingLocation];
-}
 
 
 
