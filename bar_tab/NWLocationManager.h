@@ -9,10 +9,11 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
 
-@interface NWLocationManager : NSObject
-@property (strong, nonatomic) CLLocationManager *locationManager;
+@interface NWLocationManager : NSObject <CLLocationManagerDelegate>
 
--(void)starLocationManager;
+-(void)startLocationManager;
+
+-(void)stopLocationManager;
 
 
 @end
