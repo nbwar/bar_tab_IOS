@@ -22,6 +22,7 @@
 		012B053018131676000E366B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 012B052E18131676000E366B /* InfoPlist.strings */; };
 		012B053218131676000E366B /* bar_tabTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 012B053118131676000E366B /* bar_tabTests.m */; };
 		012B053C18131EAE000E366B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012B053B18131EAE000E366B /* CoreLocation.framework */; };
+		01A3A46718139351001C1087 /* NWLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A3A46618139351001C1087 /* NWLocationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		012B052F18131676000E366B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		012B053118131676000E366B /* bar_tabTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bar_tabTests.m; sourceTree = "<group>"; };
 		012B053B18131EAE000E366B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		01A3A46518139351001C1087 /* NWLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWLocationManager.h; sourceTree = "<group>"; };
+		01A3A46618139351001C1087 /* NWLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWLocationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				012B051818131676000E366B /* Main.storyboard */,
 				012B051B18131676000E366B /* NWViewController.h */,
 				012B051C18131676000E366B /* NWViewController.m */,
+				01A3A46518139351001C1087 /* NWLocationManager.h */,
+				01A3A46618139351001C1087 /* NWLocationManager.m */,
 				012B051E18131676000E366B /* Images.xcassets */,
 				012B050D18131676000E366B /* Supporting Files */,
 			);
@@ -257,6 +262,7 @@
 				012B051D18131676000E366B /* NWViewController.m in Sources */,
 				012B051318131676000E366B /* main.m in Sources */,
 				012B051718131676000E366B /* NWAppDelegate.m in Sources */,
+				01A3A46718139351001C1087 /* NWLocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
